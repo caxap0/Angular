@@ -1,0 +1,28 @@
+<body>
+<div class="navbar">
+  <div class="logo">Stepik</div>
+  <div class="links">
+    <a>Каталог</a>
+    <a>Преподавание</a>
+    <a>Войти</a>
+    <a>Регистрация</a>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="course-list">
+    <h2>Python</h2>
+    <p>Курсы, которые помогут вам изучить один из самых популярных языков программирования от базовых конструкций до разработки приложений и работы с данными.</p>
+
+    <div *ngIf="courses.length === 0" class="no-courses">
+      Курсы не найдены.
+    </div>
+
+    <app-course-card *ngFor="let course of courses" [title]="course.title" [description]="course.description">
+      <button class="green" [routerLink]="'/certificate'" [ngStyle]="{'background-color': 'green', 'color': 'white'}">Сертификат</button>
+      <button class="gray" [routerLink]="'/about-course'" [ngStyle]="{'background-color': 'gray', 'color': 'white'}">Подробнее</button>
+    </app-course-card>
+  </div>
+</div>
+</body>

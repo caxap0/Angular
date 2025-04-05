@@ -1,0 +1,122 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7fafc;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #1f2937;
+  color: white;
+  padding: 16px 32px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-size: 16px;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+}
+
+.course-list {
+  width: 100%;
+  max-width: 1200px;
+}
+
+.course-list h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.course-list p {
+  color: #4a5568;
+  margin-bottom: 30px;
+}
+
+.course-card {
+  background-color: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.course-card p {
+  color: #4a5568;
+  margin-bottom: 10px;
+}
+
+.course-card .price {
+  font-size: 1.25rem;
+  color: #38a169;
+  font-weight: 600;
+}
+
+.course-card .buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.course-card .buttons button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border: none;
+}
+
+.course-card .buttons button.green {
+  background-color: #38a169;
+  color: white;
+}
+
+.course-card .buttons button.green:hover {
+  background-color: #2f855a;
+}
+
+.course-card .buttons button.gray {
+  background-color: #e2e8f0;
+  color: black;
+}
+
+.course-card .buttons button.gray:hover {
+  background-color: #cbd5e0;
+}
+
+.course-list {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.no-courses {
+  padding: 20px;
+  background-color: #f8d7da; /* Светло-красный фон */
+  color: #721c24; /* Темно-красный текст */
+  border: 1px solid #f5c6cb; /* Граница */
+  border-radius: 5px;
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}

@@ -1,0 +1,11 @@
+<div class="chat-container">
+  <div class="chat-box">
+    <div *ngFor="let comment of comments" class="chat-message">
+      {{ comment }}
+    </div>
+  </div>
+  <div class="chat-input">
+    <input [(ngModel)]="inputText" type="text" (keyup.enter)="sendComment()">
+    <button (click)="sendComment()">Отправить</button>
+  </div>
+</div>
