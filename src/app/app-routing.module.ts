@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { AboutCourseComponent } from './about-course/about-course.component';
 import { CertificateComponent } from './certificate/certificate.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {path: '',component: HomePageComponent},
@@ -15,7 +16,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes),
-  FormsModule, NgModule],
+  FormsModule, NgModule, ReactiveFormsModule],
   exports: [RouterModule]
 })
 

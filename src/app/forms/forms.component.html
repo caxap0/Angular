@@ -1,0 +1,122 @@
+<div class="page-wrapper">
+  <div class="card">
+    <h3>Форма FormBuilder</h3>
+    <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+      <div class="form-field">
+        <label for="email">Почта</label>
+        <input id="email" type="email" formControlName="email" />
+        <div *ngIf="regForm.get('email')?.touched && regForm.get('email')?.errors" class="error-message">
+          <span *ngIf="regForm.get('email')?.errors?.['required']">Email обязателен</span>
+          <span *ngIf="regForm.get('email')?.errors?.['email']">Введите корректный email</span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="tel">Телефон</label>
+        <input id="tel" type="tel" formControlName="tel" />
+        <div *ngIf="regForm.get('tel')?.touched && regForm.get('tel')?.errors" class="error-message">
+          <span *ngIf="regForm.get('tel')?.errors?.['required']">Телефон обязателен</span>
+          <span *ngIf="regForm.get('tel')?.errors?.['pattern']">Введите корректный телефон</span>
+          <span *ngIf="regForm.get('tel')?.errors?.['minlength']">
+            Минимальная длина {{ regForm.get('tel')?.errors?.['minlength']?.requiredLength }} символов
+          </span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="full_name">Полное имя</label>
+        <input id="full_name" type="text" formControlName="full_name" />
+        <div *ngIf="regForm.get('full_name')?.touched && regForm.get('full_name')?.errors" class="error-message">
+          <span *ngIf="regForm.get('full_name')?.errors?.['required']">Имя обязательно</span>
+          <span *ngIf="regForm.get('full_name')?.errors?.['minlength']">
+            Минимальная длина {{ regForm.get('full_name')?.errors?.['minlength']?.requiredLength }} символов
+          </span>
+          <span *ngIf="regForm.get('full_name')?.errors?.['maxlength']">
+            Максимальная длина {{ regForm.get('full_name')?.errors?.['maxlength']?.requiredLength }} символов
+          </span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="password">Пароль</label>
+        <input id="password" type="password" formControlName="password" />
+        <div *ngIf="regForm.get('password')?.touched && regForm.get('password')?.errors" class="error-message">
+          <span *ngIf="regForm.get('password')?.errors?.['required']">Пароль обязателен</span>
+          <span *ngIf="regForm.get('password')?.errors?.['pattern']">
+            Пароль должен содержать минимум 8 символов, включая буквы и цифры
+          </span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="birthday_data">Дата рождения</label>
+        <input id="birthday_data" type="date" formControlName="birthday_data" />
+      </div>
+
+      <button type="submit" [disabled]="regForm.invalid" class="submit-button">
+        Зарегистрироваться
+      </button>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Форма NgModel</h3>
+    <form #ngFormRef="ngForm" (ngSubmit)="onNgModelSubmit()">
+      <div class="form-field">
+        <label for="username">Имя пользователя</label>
+        <input
+          id="username"
+          name="username"
+          [(ngModel)]="ngModelForm.username"
+          required
+          minlength="3"
+          #usernameRef="ngModel"
+        />
+        <div class="error-message" *ngIf="usernameRef.invalid && usernameRef.touched">
+          <span *ngIf="usernameRef.errors?.['required']">Имя обязательно</span>
+          <span *ngIf="usernameRef.errors?.['minlength']">Минимум 3 символа</span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="age">Возраст</label>
+        <input
+          id="age"
+          type="number"
+          name="age"
+          [(ngModel)]="ngModelForm.age"
+          required
+          min="18"
+          max="120"
+          #ageRef="ngModel"
+        />
+        <div class="error-message" *ngIf="ageRef.invalid && ageRef.touched">
+          <span *ngIf="ageRef.errors?.['required']">Возраст обязателен</span>
+          <span *ngIf="ageRef.errors?.['min']">Минимальный возраст — 18</span>
+          <span *ngIf="ageRef.errors?.['max']">Максимальный возраст — 120</span>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="email2">Email</label>
+        <input
+          id="email2"
+          type="email"
+          name="email2"
+          [(ngModel)]="ngModelForm.email"
+          required
+          email
+          #email2Ref="ngModel"
+        />
+        <div class="error-message" *ngIf="email2Ref.invalid && email2Ref.touched">
+          <span *ngIf="email2Ref.errors?.['required']">Email обязателен</span>
+          <span *ngIf="email2Ref.errors?.['email']">Некорректный формат email</span>
+        </div>
+      </div>
+
+      <button type="submit" class="submit-button" [disabled]="ngFormRef.invalid">
+        Отправить и очистить
+      </button>
+    </form>
+  </div>
+</div>
