@@ -1,0 +1,40 @@
+<h2>Список товаров</h2>
+<ul>
+  <li *ngFor="let item of items">
+    <strong>{{ item.name }}</strong>
+    <ul *ngIf="item.data">
+      <li *ngFor="let key of objectKeys(item.data)">
+        {{ key }}: {{ item.data[key] }}
+      </li>
+    </ul>
+    <button (click)="deleteItem(item.id)">Удалить</button>
+  </li>
+</ul>
+
+<hr>
+
+<h3>Добавить новый товар</h3>
+<label>
+  Название:
+  <input [(ngModel)]="newName">
+</label>
+
+<br><br>
+
+<label>
+  Ключ:
+  <input [(ngModel)]="newDataKey" placeholder="например: color">
+</label>
+<label>
+  Значение:
+  <input [(ngModel)]="newDataValue" placeholder="например: black">
+</label>
+<button (click)="addDataField()">Добавить поле</button>
+
+<ul>
+  <li *ngFor="let key of objectKeys(dataObject)">
+    {{ key }}: {{ dataObject[key] }}
+  </li>
+</ul>
+
+<button (click)="addItem()">Создать объект</button>
